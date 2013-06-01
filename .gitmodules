@@ -1,5 +1,5 @@
-[submodule "Test1"]
-  path = Test1
+[submodule "test1"]
+  path = test1
 	url = git://github.com/vivatvet/test1.git
 [submodule "test1"]
 	path = test1
