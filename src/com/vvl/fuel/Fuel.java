@@ -1,7 +1,8 @@
 package com.vvl.fuel;
 
 import java.util.ArrayList;
-
+import android.content.SharedPreferences.Editor;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 public class Fuel extends Activity implements OnClickListener {
 
 	 private ArrayList<PostItem> messages;
+    SharedPreferences sPref;
 	
 	EditText editText1;
 	EditText editText2;
@@ -42,6 +44,9 @@ public class Fuel extends Activity implements OnClickListener {
 	
 	String d;
 	String d2;
+
+   final String price = "price";
+   final String comp = "comp";
 	
 	float rate_titlg =1;
 	float rate_titl1 =1;
@@ -114,6 +119,7 @@ public class Fuel extends Activity implements OnClickListener {
 				// TODO Auto-generated method stub				
 			}
           });
+        loadText();
         
  }
 
@@ -156,16 +162,19 @@ public class Fuel extends Activity implements OnClickListener {
 			// определяем нажатую кнопку и выполняем соответствующую операцию
 	        switch (v.getId()) {
 	        case R.id.button1:
+                  saveText();
 	              result1_1 =( km_drove * consumption)/100;
 	              result1_2 =price*result1_1;	              
 	              textViewResult1.setText(getResources().getText(R.string.result1_1).toString() + " " + result1_1 + " " + getResources().getText(R.string.result1_2).toString() + " " + result1_2 + " " + d);
 	              break;
 	        case R.id.button2:
+                  saveText();
 		          result2_1 =sum/price;
 		          result2_2 =result2_1*100/consumption;
 		          textViewResult2.setText(getResources().getText(R.string.result2_1).toString() + " " + result2_1 + " " + getResources().getText(R.string.result2_2).toString() + " " + result2_2 + " " + getResources().getText(R.string.result2_3).toString());
 		          break;
 	        case R.id.button3:
+                  saveText();
 		          result3 =gas*100/consumption;
 		          textViewResult3.setText(getResources().getText(R.string.result3_1).toString() + " " + result3 + " " + getResources().getText(R.string.result2_3).toString());
 		          break;
@@ -235,5 +244,23 @@ private class GetCurrency extends AsyncTask<Context, Integer, ArrayList<PostItem
         String d2v = d2v_glob;
         textViewResult1.setText(getResources().getText(R.string.result1_1).toString() + " " + result1_1 + " " + getResources().getText(R.string.result1_2).toString() + " " + result1_2 + " " + d2v);
     }
- }    
+ }
+    void saveText() {
+        sPref = getPreferences(MODE_PRIVATE);
+        Editor priceED = sPref.edit();
+        //Editor compED = sPref.edit();
+        priceED.putString(price, editText1.getText().toString());
+        priceED.putString(comp, editText2.getText().toString());
+        priceED.commit();
+        //Toast.makeText(this, "Text saved", Toast.LENGTH_SHORT).show();
+    }
+
+    void loadText() {
+        sPref = getPreferences(MODE_PRIVATE);
+        String savedPrice = sPref.getString(price, "");
+        String savedComp = sPref.getString(comp, "");
+        editText1.setText(savedPrice);
+        editText2.setText(savedComp);
+        //Toast.makeText(this, "Text loaded", Toast.LENGTH_SHORT).show();
+    }
 }
