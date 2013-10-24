@@ -11,6 +11,7 @@
     <string name="sum">Введите сумму денег.</string>
     <string name="gasoline">Введите количество бензина в литрах.</string>
     <string name="ref_result">Нажмите OK.</string>
+    <string name="check_box1">Двойной путь.</string>
     
     <string name="result1_1">Вы потратили </string>
     <string name="result1_2"> литров бензина и </string>

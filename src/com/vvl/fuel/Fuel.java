@@ -14,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -41,6 +42,8 @@ public class Fuel extends Activity implements OnClickListener {
 	TextView textViewResult1;
 	TextView textViewResult2;
 	TextView textViewResult3;
+	
+	CheckBox td;
 	
 	String d;
 	String d2;
@@ -87,6 +90,8 @@ public class Fuel extends Activity implements OnClickListener {
         button2.setOnClickListener(this);
         button3.setOnClickListener(this);
         button4.setOnClickListener(this);
+        
+        td = (CheckBox) findViewById(R.id.checkBox1);
         
      // адаптер
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data);
@@ -163,7 +168,10 @@ public class Fuel extends Activity implements OnClickListener {
 	        switch (v.getId()) {
 	        case R.id.button1:
                   saveText();
-	              result1_1 =( km_drove * consumption)/100;
+				  int dubtrip;
+				if (td.isChecked()) {dubtrip=2;}
+	        	  else {dubtrip=1;}
+	              result1_1 =( (dubtrip * km_drove) * consumption)/100;
 	              result1_2 =price*result1_1;	              
 	              textViewResult1.setText(getResources().getText(R.string.result1_1).toString() + " " + result1_1 + " " + getResources().getText(R.string.result1_2).toString() + " " + result1_2 + " " + d);
 	              break;
@@ -191,7 +199,9 @@ public class Fuel extends Activity implements OnClickListener {
 	     		if (d2v.equals("руб.")) { titl2 = "RUB/UAH"; }
 	     		if (d2v.equals("грн.")) { titl2 = "UAH/UAH"; }
 	     		if (d2v.equals("euro")) { titl2 = "EUR/UAH"; }
-	     	    result1_1_glob =(km_drove * consumption)/100;
+	     		if (td.isChecked()) {dubtrip=2;}
+	        	  else {dubtrip=1;}
+	     	    result1_1_glob =((dubtrip * km_drove) * consumption)/100;
 	            result1_2_glob =price*result1_1_glob;
 	     		GetCurrency runCurr = new GetCurrency();
 	     		ConnectivityManager net = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);

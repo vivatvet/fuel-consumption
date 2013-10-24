@@ -11,6 +11,7 @@
     <string name="sum">Enter sum of money.</string>
     <string name="gasoline">Enter amount of gasoline in liters.</string>
     <string name="ref_result">Press OK.</string>
+    <string name="check_box1">Twice distance.</string>
     
     <string name="result1_1">You spent </string>
     <string name="result1_2"> liters of gasoline and </string>
