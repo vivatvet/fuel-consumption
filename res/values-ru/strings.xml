@@ -25,6 +25,7 @@
     <string name="error_net">Нет подключения к интернету</string>
     
     <string name="button_ok">OK</string>
-    <string name="button_up">Обнов.</string> 
+    <string name="button_up">Обнов.</string>
+    <string name="First_text">Введите стоимость 1 литра бензина, а также, если известно, расход Вашего авто (Л/100км).</string>
 
 </resources>

@@ -80,7 +80,7 @@ public class Fuel extends Activity implements OnClickListener {
         button2 = (Button) findViewById(R.id.button2);
         button3 = (Button) findViewById(R.id.button3);
         button4 = (Button) findViewById(R.id.button4);
-        
+
         textViewResult1 = (TextView) findViewById(R.id.textViewResult1);
         textViewResult2 = (TextView) findViewById(R.id.textViewResult2);
         textViewResult3 = (TextView) findViewById(R.id.textViewResult3);

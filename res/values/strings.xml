@@ -26,5 +26,6 @@
     
     <string name="button_ok">OK</string>
      <string name="button_up">Update</string>
+    <string name="First_text">Welcom!</string>
 
 </resources>
