@@ -28,4 +28,6 @@
      <string name="button_up">Update</string>
     <string name="First_text">Welcom!</string>
 
+    <string name="button_next">Next</string>
+
 </resources>

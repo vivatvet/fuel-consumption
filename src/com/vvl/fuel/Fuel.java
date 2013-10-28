@@ -67,7 +67,7 @@ public class Fuel extends Activity implements OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fuel);
+        setContentView(R.layout.activity_fuel2);
         
      // находим элементы
         editText1 = (EditText) findViewById(R.id.editText1);
