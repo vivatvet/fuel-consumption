@@ -29,5 +29,8 @@
     <string name="First_text">Welcom!</string>
 
     <string name="button_next">Next</string>
+    <string name="textView_price_title">Fuel costs:</string>
+    <string name="textView_comp_title">Fuel consumption:</string>
+    <string name="textView_invitation">Complete the following lines. You can fill them not all.</string>
 
 </resources>

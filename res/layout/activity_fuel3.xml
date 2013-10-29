@@ -4,15 +4,76 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView_price" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="110dp"
+        android:background="@android:drawable/picture_frame">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView_comp" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="53dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:drawable/dialog_holo_light_frame">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/textView_price_title"
+                    android:id="@+id/textView_price_title"
+                    android:layout_gravity="center_horizontal"
+                    android:textStyle="normal"
+                    android:textSize="@dimen/padding_medium" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="New Text"
+                    android:id="@+id/textView_price"
+                    android:layout_gravity="center_horizontal"
+                    android:textStyle="normal"
+                    android:textSize="@dimen/padding_medium" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:drawable/dialog_holo_light_frame">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/textView_comp_title"
+                    android:id="@+id/textView_comp_title"
+                    android:layout_gravity="center_horizontal"
+                    android:textStyle="normal"
+                    android:textSize="@dimen/padding_medium" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="New Text"
+                    android:id="@+id/textView4_comp"
+                    android:layout_gravity="center_horizontal"
+                    android:textStyle="normal"
+                    android:textSize="@dimen/padding_medium" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:text="@string/textView_invitation"
+            android:id="@+id/textView_invitation"
+            android:autoText="false"
+            android:gravity="center"
+            android:textStyle="normal|italic" />
+    </LinearLayout>
 </LinearLayout>
