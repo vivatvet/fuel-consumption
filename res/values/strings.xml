@@ -35,5 +35,7 @@
     <string name="fuel_comp_empty">unknown</string>
     <string name="price_empty">Enter the cost of fuel</string>
     <string name="liters">L/100 km</string>
+    <string name="way1">one way</string>
+    <string name="way2">there and back</string>
 
 </resources>

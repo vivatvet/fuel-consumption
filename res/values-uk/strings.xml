@@ -35,5 +35,7 @@
     <string name="fuel_comp_empty">неизвестно</string>
     <string name="price_empty">Введите стоимость топлива</string>
     <string name="liters">Л/100 км</string>
+    <string name="way1">в одну сторону</string>
+    <string name="way2">туда и обратно</string>
 
 </resources>

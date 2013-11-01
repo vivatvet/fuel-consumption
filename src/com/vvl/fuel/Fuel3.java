@@ -3,7 +3,9 @@ package com.vvl.fuel;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 /**
@@ -16,6 +18,7 @@ public class Fuel3 extends Activity {
     EditText editText_dist;
     EditText editText_sum;
     EditText editText_fuel;
+    String[] data_way = {getResources().getText(R.string.way1).toString(), getResources().getText(R.string.way2).toString()};
 
 
     @Override
@@ -38,6 +41,13 @@ public class Fuel3 extends Activity {
         if (comp.isEmpty()) {textView_comp.setText(getResources().getText(R.string.fuel_comp_empty).toString());}
         else {textView_comp.setText(comp + " " + getResources().getText(R.string.liters).toString());}
         textView_price.setText(price + " " + curr);
+
+        // адаптер
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data_way);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        final Spinner spinner = (Spinner) findViewById(R.id.spinner_way);
+        spinner.setAdapter(adapter);
 
 
     }
