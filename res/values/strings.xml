@@ -1,9 +1,9 @@
 <resources>
 
-    <string name="app_name">Fuel</string>
+    <string name="app_name">Fuel Consumption</string>
     <string name="hello_world">Test text!</string>
     <string name="menu_settings">Settings</string>
-    <string name="title_activity_fuel">Fuel</string>
+    <string name="title_activity_fuel">Fuel Consumption</string>
     <string name="price_gasoline">Price 1 liter gasoline.</string>
     <string name="consump_gasoline">Consumption gasoline your car(L/100km).</string>
     <string name="header">Calculation of gasoline and distance traveled.</string>
@@ -33,5 +33,7 @@
     <string name="textView_comp_title">Fuel consumption:</string>
     <string name="textView_invitation">Complete the following lines.\nYou can fill them not all.</string>
     <string name="fuel_comp_empty">unknown</string>
+    <string name="price_empty">Enter the cost of fuel</string>
+    <string name="liters">L/100 km</string>
 
 </resources>

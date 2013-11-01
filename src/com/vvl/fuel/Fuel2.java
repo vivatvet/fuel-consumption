@@ -4,21 +4,21 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 /**
  * Created by budnik on 24.10.13.
  */
 public class Fuel2 extends Activity implements View.OnClickListener {
 
-    //String[] data = {"dollars", "грн.", "руб.", "euro"};
-    private Fuel fuel = new Fuel();
-    String[] data = fuel.data;
+    String[] data = {"dollars", "грн.", "руб.", "euro"};
     SharedPreferences sPref;
 
     EditText editText_price;
@@ -28,7 +28,6 @@ public class Fuel2 extends Activity implements View.OnClickListener {
     final String price = "price";
     final String comp = "comp";
     String d;
-    String pr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +95,12 @@ public class Fuel2 extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
 
+        // Проверяем поля на пустоту
+        if (TextUtils.isEmpty(editText_price.getText().toString()) ) {
+            Toast.makeText(this, getResources().getText(R.string.price_empty).toString(), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         switch (v.getId()) {
             case R.id.button_next:
                 saveText();
@@ -110,8 +115,6 @@ public class Fuel2 extends Activity implements View.OnClickListener {
         }
 
     }
-
-
 
 
 }

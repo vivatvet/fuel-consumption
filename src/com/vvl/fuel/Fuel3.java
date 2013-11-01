@@ -31,13 +31,14 @@ public class Fuel3 extends Activity {
         editText_sum = (EditText) findViewById(R.id.editText_sum);
         editText_fuel = (EditText) findViewById(R.id.editText_fuel);
 
-
-
         String price = intent.getStringExtra("price");
         String comp = intent.getStringExtra("comp");
-        if (comp.isEmpty()) {comp =getResources().getText(R.string.fuel_comp_empty).toString();}
+        String curr = intent.getStringExtra("curr");
 
-        textView_comp.setText("Comp = " + comp);
+        if (comp.isEmpty()) {textView_comp.setText(getResources().getText(R.string.fuel_comp_empty).toString());}
+        else {textView_comp.setText(comp + " " + getResources().getText(R.string.liters).toString());}
+        textView_price.setText(price + " " + curr);
+
 
     }
 }
