@@ -31,6 +31,7 @@
     <string name="button_next">Далее</string>
     <string name="textView_price_title">Стоимость топлива:</string>
     <string name="textView_comp_title">Расход топлива:</string>
-    <string name="textView_invitation">Заполните следующие поля. Вы можете заполнять их не все.</string>
+    <string name="textView_invitation">Заполните следующие поля.\nВы можете заполнять их не все.</string>
+    <string name="fuel_comp_empty">неизвестно</string>
 
 </resources>
