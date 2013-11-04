@@ -18,7 +18,6 @@ public class Fuel3 extends Activity {
     EditText editText_dist;
     EditText editText_sum;
     EditText editText_fuel;
-    String[] data_way = {getResources().getText(R.string.way1).toString(), getResources().getText(R.string.way2).toString()};
 
 
     @Override
@@ -43,7 +42,7 @@ public class Fuel3 extends Activity {
         textView_price.setText(price + " " + curr);
 
         // адаптер
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data_way);
+        ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.ways, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         final Spinner spinner = (Spinner) findViewById(R.id.spinner_way);

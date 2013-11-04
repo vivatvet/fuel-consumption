@@ -38,4 +38,9 @@
     <string name="way1">в одну сторону</string>
     <string name="way2">туда и обратно</string>
 
+    <string-array name="ways">
+        <item>в одну сторону</item>
+        <item>туда и обратно</item>
+    </string-array>
+
 </resources>

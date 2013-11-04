@@ -38,4 +38,9 @@
     <string name="way1">one way</string>
     <string name="way2">there and back</string>
 
+    <string-array name="ways">
+        <item>one way</item>
+        <item>there and back</item>
+    </string-array>
+
 </resources>
