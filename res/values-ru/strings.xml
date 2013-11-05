@@ -43,5 +43,6 @@
         <item>туда и обратно</item>
     </string-array>
 
+    <string name="result_title">Результат вычислений</string>
 
 </resources>

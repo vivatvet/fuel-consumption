@@ -43,4 +43,6 @@
         <item>there and back</item>
     </string-array>
 
+    <string name="result_title">Result of calculations</string>
+
 </resources>
