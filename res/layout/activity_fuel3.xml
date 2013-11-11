@@ -2,7 +2,8 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:drawable/picture_frame">
 
     <LinearLayout
         android:orientation="vertical"
@@ -97,7 +98,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/distance"
-            android:id="@+id/textView_dist" />
+            android:id="@+id/textView_dist"
+            android:textStyle="normal"
+            android:textSize="@dimen/padding_medium" />
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -129,7 +132,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sum"
-            android:id="@+id/textView_sum" />
+            android:id="@+id/textView_sum"
+            android:textStyle="normal"
+            android:textSize="@dimen/padding_medium" />
 
         <EditText
             android:layout_width="match_parent"
@@ -150,7 +155,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/gasoline"
-            android:id="@+id/textView_fuel" />
+            android:id="@+id/textView_fuel"
+            android:textStyle="normal"
+            android:textSize="@dimen/padding_medium" />
 
         <EditText
             android:layout_width="match_parent"
@@ -159,6 +166,19 @@
             android:ems="10"
             android:id="@+id/editText_fuel" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_next"
+            android:id="@+id/button"
+            android:layout_gravity="center_horizontal" />
     </LinearLayout>
 
 </LinearLayout>
