@@ -24,88 +24,106 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="30dp">
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/picture_frame">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/textView_price_title"
-            android:id="@+id/textView"
+            android:id="@+id/textView41"
             android:layout_weight="1"
-            android:layout_marginTop="5dp" />
+            android:layout_marginTop="5dp"
+            android:textStyle="normal"
+            android:textSize="@dimen/padding_medium" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="30dp"
-        android:id="@+id/linearLayout">
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout"
+        android:background="@android:drawable/picture_frame">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/textView_comp_title"
-            android:id="@+id/textView2"
+            android:id="@+id/textView42"
             android:layout_weight="1"
-            android:layout_marginTop="5dp" />
+            android:layout_marginTop="5dp"
+            android:textStyle="normal"
+            android:textSize="@dimen/padding_medium" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="30dp"
-        android:id="@+id/linearLayout2" >
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout2"
+        android:background="@android:drawable/picture_frame">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/textView3"
+            android:text="@string/result1_1"
+            android:id="@+id/textView43"
             android:layout_weight="1"
-            android:layout_marginTop="5dp" />
+            android:layout_marginTop="5dp"
+            android:textStyle="normal"
+            android:textSize="@dimen/padding_medium" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="30dp"
-        android:id="@+id/linearLayout3" >
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout3"
+        android:background="@android:drawable/picture_frame">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/textView4"
+            android:text="@string/result2_1"
+            android:id="@+id/textView44"
             android:layout_weight="1"
-            android:layout_marginTop="5dp" />
+            android:layout_marginTop="5dp"
+            android:textStyle="normal"
+            android:textSize="@dimen/padding_medium" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="30dp"
-        android:id="@+id/linearLayout4" >
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout4"
+        android:background="@android:drawable/picture_frame">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/textView5"
+            android:text="@string/result3_1"
+            android:id="@+id/textView45"
             android:layout_weight="1"
-            android:layout_marginTop="5dp" />
+            android:layout_marginTop="5dp"
+            android:textStyle="normal"
+            android:textSize="@dimen/padding_medium" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/picture_frame">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/textView6" />
+            android:text="@string/out_feed"
+            android:id="@+id/textView46"
+            android:textStyle="normal"
+            android:textSize="@dimen/padding_medium" />
 
         <Spinner
             android:layout_width="146dp"
             android:layout_height="40dp"
-            android:id="@+id/spinner"
+            android:id="@+id/spinner41"
             android:layout_marginLeft="6dp" />
     </LinearLayout>
 </LinearLayout>

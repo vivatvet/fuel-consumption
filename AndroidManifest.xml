@@ -28,6 +28,11 @@
             android:label="@string/title_activity_fuel"
             android:theme="@style/AppTheme" >
         </activity>
+        <activity
+            android:name=".Fuel4"
+            android:label="@string/title_activity_fuel"
+            android:theme="@style/AppTheme" >
+        </activity>
     </application>
 
 </manifest>
