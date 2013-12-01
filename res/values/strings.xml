@@ -16,7 +16,7 @@
     <string name="result1_1">You spent </string>
     <string name="result1_2"> liters of gasoline and </string>
     <string name="result2_1">You buy</string>
-    <string name="result2_2">liters of gasoline and will travel</string>
+    <string name="result2_2">liters of gasoline.</string>
     <string name="result2_3">km.</string>
      <string name="result3_1">You will drive</string>
      <string name="out_feed">Out Result in</string>

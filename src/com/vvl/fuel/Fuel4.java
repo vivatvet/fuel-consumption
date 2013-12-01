@@ -15,6 +15,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import java.util.ArrayList;
 
 /**
@@ -27,6 +30,8 @@ public class Fuel4 extends Activity implements View.OnClickListener {
     TextView textView41;
     TextView textView42;
     TextView textView43;
+    TextView textView44;
+    TextView textView45;
     Button button41;
 
     String dist_sp_g;
@@ -35,6 +40,7 @@ public class Fuel4 extends Activity implements View.OnClickListener {
     String comp_g;
     String curr_g;
     String fuel_g;
+    String sum_g;
     String d;
     String titl1 = null;
     String titl2 = null;
@@ -42,11 +48,11 @@ public class Fuel4 extends Activity implements View.OnClickListener {
     float rate_titl2 =1;
     float  result1_1_glob;
     float  result1_2_glob;
+    float result2_1_glob;
     float price_float;
     float distance;
     float consumption;
 
-    String d2v_glob;
     int dubtrip;
     String[] data = {"dollars", "грн.", "руб.", "euro"};
 
@@ -63,16 +69,22 @@ public class Fuel4 extends Activity implements View.OnClickListener {
         String price = intent.getStringExtra("price3");
         String comp = intent.getStringExtra("comp3");
         String curr = intent.getStringExtra("curr3");
+        String sum = intent.getStringExtra("sum");
         dist_sp_g = dist_sp;
         dist_g = dist;
         price_g = price;
         comp_g = comp;
         curr_g = curr;
         fuel_g = fuel;
+        sum_g = sum;
+        float cons_l = 0;
+        float result2_2_1;
 
         textView41 = (TextView) findViewById(R.id.textView41);
         textView42 = (TextView) findViewById(R.id.textView42);
         textView43 = (TextView) findViewById(R.id.textView43);
+        textView44 = (TextView) findViewById(R.id.textView44);
+        textView45 = (TextView) findViewById(R.id.textView45);
         button41 = (Button) findViewById(R.id.button41);
 
         button41.setOnClickListener(this);
@@ -116,7 +128,44 @@ public class Fuel4 extends Activity implements View.OnClickListener {
         }
 
         //Calculation spend
-        pre_calculation_spedt();
+        if (!TextUtils.isEmpty(dist_g)){
+        pre_calculation_spedt_first();}
+
+        //Calculation benzina
+        if (!TextUtils.isEmpty(sum_g)) {
+            textView44.setText(getResources().getText(R.string.result2_1).toString() + " " + calculation_benz() + " " + getResources().getText(R.string.result2_2).toString());
+        }
+        else {
+            //nothing
+        }
+
+        //Calculation dist
+        if ((TextUtils.isEmpty(comp.toString())) && !TextUtils.isEmpty(fuel.toString()) && !TextUtils.isEmpty(dist.toString())){
+             cons_l = calculation_comp();
+        }
+        else if (!TextUtils.isEmpty(comp.toString())) {
+             cons_l = Float.parseFloat(comp);
+        }
+        else {
+             // nothing
+        }
+        if ((!TextUtils.isEmpty(sum_g)) && (cons_l != 0)) {
+            if (!TextUtils.isEmpty(fuel)) {
+                result2_2_1 = Float.parseFloat(fuel);
+            }
+            else {
+                result2_2_1 = calculation_benz();
+            }
+            float result2_2 = result2_2_1*100/cons_l;
+            float result2_2_n = new BigDecimal (result2_2).setScale(2, RoundingMode.HALF_UP).floatValue();
+            textView45.setText(getResources().getText(R.string.result3_1).toString() + " " + result2_2_n + " " + getResources().getText(R.string.result2_3).toString());
+        }
+        else if ((TextUtils.isEmpty(sum_g)) && (cons_l != 0) && (!TextUtils.isEmpty(fuel))) {
+            result2_2_1 = Float.parseFloat(fuel);
+            float result2_2 = result2_2_1*100/cons_l;
+            float result2_2_n = new BigDecimal (result2_2).setScale(2, RoundingMode.HALF_UP).floatValue();
+            textView45.setText(getResources().getText(R.string.result3_1).toString() + " " + result2_2_n + " " + getResources().getText(R.string.result2_3).toString());
+        }
 
     }
 
@@ -126,7 +175,8 @@ public class Fuel4 extends Activity implements View.OnClickListener {
             case R.id.button41:
                 Spinner spinner = (Spinner) findViewById(R.id.spinner41);
                 d = spinner.getSelectedItem().toString();
-                pre_calculation_spedt();
+                if (!TextUtils.isEmpty(dist_g)){
+                pre_calculation_spedt();}
                 break;
             default:
                 break;
@@ -137,7 +187,43 @@ public class Fuel4 extends Activity implements View.OnClickListener {
         float dist_r = Float.parseFloat(dist_g);
         float fuel_r = Float.parseFloat(fuel_g);
         float comp_r = 100*fuel_r/dist_r;
-        return comp_r;
+        float comp_r_n = new BigDecimal (comp_r).setScale(2, RoundingMode.HALF_UP).floatValue();
+        return comp_r_n;
+    }
+
+    private float calculation_benz() {
+        float sum_g_float = Float.parseFloat(sum_g);
+        float price_g_float = Float.parseFloat(price_g);
+        result2_1_glob =sum_g_float / price_g_float;
+        float result2_1_glob_n = new BigDecimal (result2_1_glob).setScale(2, RoundingMode.HALF_UP).floatValue();
+        return result2_1_glob_n;
+    }
+
+    private void pre_calculation_spedt_first() {
+        price_float = Float.parseFloat(price_g);
+        distance = Float.parseFloat(dist_g);
+        if (dist_sp_g.equals("1")) {dubtrip=2;}
+        else {dubtrip=1;}
+        if ((TextUtils.isEmpty(comp_g.toString())) && !TextUtils.isEmpty(fuel_g.toString()) && !TextUtils.isEmpty(dist_g.toString())) {
+            consumption = calculation_comp();
+            result1_1_glob =((dubtrip * distance) * consumption)/100;
+            result1_2_glob =price_float*result1_1_glob;
+            float result1_1_glob_n = new BigDecimal (result1_1_glob).setScale(2, RoundingMode.HALF_UP).floatValue();
+            float result1_2_glob_n = new BigDecimal (result1_2_glob).setScale(2, RoundingMode.HALF_UP).floatValue();
+            textView43.setText(getResources().getText(R.string.result1_1).toString() + " " + result1_1_glob_n + " " + getResources().getText(R.string.result1_2).toString() + " " + result1_2_glob_n + " " + d);
+        }
+        else if (!TextUtils.isEmpty(comp_g.toString())) {
+            consumption = Float.parseFloat(comp_g);
+            result1_1_glob =((dubtrip * distance) * consumption)/100;
+            result1_2_glob =price_float*result1_1_glob;
+            float result1_1_glob_n = new BigDecimal (result1_1_glob).setScale(2, RoundingMode.HALF_UP).floatValue();
+            float result1_2_glob_n = new BigDecimal (result1_2_glob).setScale(2, RoundingMode.HALF_UP).floatValue();
+            textView43.setText(getResources().getText(R.string.result1_1).toString() + " " + result1_1_glob_n + " " + getResources().getText(R.string.result1_2).toString() + " " + result1_2_glob_n + " " + d);
+        }
+        else {
+            // nothing
+        }
+
     }
 
     private void pre_calculation_spedt() {
@@ -214,7 +300,8 @@ public class Fuel4 extends Activity implements View.OnClickListener {
             curr_r = rate_titl2 / rate_titl1;
             result1_1 = result1_1_glob;
             result1_2 = result1_2_glob*curr_r;
-            //String d2v = d2v_glob;
+            //float result1_1_n = new BigDecimal (result1_1).setScale(3, RoundingMode.HALF_UP).floatValue();
+            //float result1_2_n = new BigDecimal (result1_2).setScale(3, RoundingMode.HALF_UP).floatValue();
             textView43.setText(getResources().getText(R.string.result1_1).toString() + " " + result1_1 + " " + getResources().getText(R.string.result1_2).toString() + " " + result1_2 + " " + d);
         }
     }
