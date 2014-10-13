@@ -27,7 +27,10 @@ public class Fuel2 extends Activity implements View.OnClickListener {
 
     final String price = "price";
     final String comp = "comp";
+    final String curr_currency = "1";
     String d;
+    int pos_item = 1;
+    int savedCurrency;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +56,11 @@ public class Fuel2 extends Activity implements View.OnClickListener {
         // заголовок
         // spinner.setPrompt("Title");
         // выделяем элемент
-        spinner.setSelection(1);
+
+        loadText();
+
+        spinner.setSelection(savedCurrency);
+
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -62,14 +69,13 @@ public class Fuel2 extends Activity implements View.OnClickListener {
                 // показываем позиция нажатого элемента
                 // Toast.makeText(getBaseContext(), "Position = " + position, Toast.LENGTH_SHORT).show();
                 d = spinner.getSelectedItem().toString();
+                pos_item = spinner.getSelectedItemPosition();
             }
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
                 // TODO Auto-generated method stub
             }
         });
-        loadText();
-
 
     }
 
@@ -79,6 +85,7 @@ public class Fuel2 extends Activity implements View.OnClickListener {
         //Editor compED = sPref.edit();
         priceED.putString(price, editText_price.getText().toString());
         priceED.putString(comp, editText_comp.getText().toString());
+        priceED.putString(curr_currency, Integer.toString(pos_item));
         priceED.commit();
         //Toast.makeText(this, "Text saved", Toast.LENGTH_SHORT).show();
     }
@@ -87,8 +94,13 @@ public class Fuel2 extends Activity implements View.OnClickListener {
         sPref = getPreferences(MODE_PRIVATE);
         String savedPrice = sPref.getString(price, "");
         String savedComp = sPref.getString(comp, "");
+        savedCurrency = Integer.parseInt(sPref.getString(curr_currency, "1"));
         editText_price.setText(savedPrice);
         editText_comp.setText(savedComp);
+
+
+
+
         //Toast.makeText(this, "Text loaded", Toast.LENGTH_SHORT).show();
     }
 
@@ -108,6 +120,7 @@ public class Fuel2 extends Activity implements View.OnClickListener {
                 intent.putExtra("price", editText_price.getText().toString());
                 intent.putExtra("comp", editText_comp.getText().toString());
                 intent.putExtra("curr", d);
+                intent.putExtra("pos_item", Integer.toString(pos_item));
                 startActivity(intent);
                 break;
             default:

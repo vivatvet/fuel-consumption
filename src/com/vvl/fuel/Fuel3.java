@@ -34,6 +34,7 @@ public class Fuel3 extends Activity implements View.OnClickListener {
     String price_g;
     String comp_g;
     String curr_g;
+    String pos_item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,7 @@ public class Fuel3 extends Activity implements View.OnClickListener {
         String price = intent.getStringExtra("price");
         String comp = intent.getStringExtra("comp");
         String curr = intent.getStringExtra("curr");
+        pos_item = intent.getStringExtra("pos_item");
         price_g = price;
         comp_g = comp;
         curr_g = curr;
@@ -134,6 +136,7 @@ public class Fuel3 extends Activity implements View.OnClickListener {
                 intent.putExtra("price3", price_g);
                 intent.putExtra("comp3", comp_g);
                 intent.putExtra("curr3", curr_g);
+                intent.putExtra("pos_item", pos_item);
                 startActivity(intent);
                 break;
             default:
