@@ -55,7 +55,7 @@ public class Fuel4 extends Activity implements View.OnClickListener {
     String pos_item;
 
     int dubtrip;
-    String[] data = {"dollars", "грн.", "руб.", "euro"};
+    String[] data = {"US Dollar", "грн.", "руб.", "Euro", "British Pound Sterling", "Polish Zloty"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -247,14 +247,20 @@ public class Fuel4 extends Activity implements View.OnClickListener {
     }
 
     private void calculation_spedt() {
-        if (curr_g.equals("dollars")) { titl1 = "USD/UAH"; }
+        if (curr_g.equals("US Dollar")) { titl1 = "USD/UAH"; }
         if (curr_g.equals("руб.")) { titl1 = "RUB/UAH"; }
         if (curr_g.equals("грн.")) { titl1 = "UAH/UAH"; }
-        if (curr_g.equals("euro")) { titl1 = "EUR/UAH"; }
-        if (d.equals("dollars")) { titl2 = "USD/UAH"; }
+        if (curr_g.equals("Euro")) { titl1 = "EUR/UAH"; }
+        if (curr_g.equals("British Pound Sterling")) { titl1 = "GBP/UAH"; }
+        if (curr_g.equals("Polish Zloty")) { titl1 = "PLN/UAH"; }
+
+        if (d.equals("US Dollar")) { titl2 = "USD/UAH"; }
         if (d.equals("руб.")) { titl2 = "RUB/UAH"; }
         if (d.equals("грн.")) { titl2 = "UAH/UAH"; }
-        if (d.equals("euro")) { titl2 = "EUR/UAH"; }
+        if (d.equals("Euro")) { titl2 = "EUR/UAH"; }
+        if (d.equals("British Pound Sterling")) { titl2 = "GBP/UAH"; }
+        if (d.equals("Polish Zloty")) { titl2 = "PLN/UAH"; }
+
         if (dist_sp_g.equals("1")) {dubtrip=2;}
         else {dubtrip=1;}
         result1_1_glob =((dubtrip * distance) * consumption)/100;

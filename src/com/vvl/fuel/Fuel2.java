@@ -18,7 +18,7 @@ import android.widget.Toast;
  */
 public class Fuel2 extends Activity implements View.OnClickListener {
 
-    String[] data = {"dollars", "грн.", "руб.", "euro"};
+    String[] data = {"US Dollar", "грн.", "руб.", "Euro", "British Pound Sterling", "Polish Zloty"};
     SharedPreferences sPref;
 
     EditText editText_price;
