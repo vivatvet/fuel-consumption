@@ -15,11 +15,12 @@
      <LinearLayout
          android:orientation="vertical"
          android:layout_width="fill_parent"
-         android:layout_height="fill_parent"
+         android:layout_height="wrap_content"
          android:id="@+id/linearLayout"
          android:clickable="true"
          android:baselineAligned="false"
-         android:background="@android:drawable/picture_frame">
+         android:background="@android:drawable/picture_frame"
+         android:layout_alignParentRight="false">
 
          <TextView
              android:layout_width="wrap_content"
@@ -33,7 +34,7 @@
 
          <TextView
              android:layout_width="wrap_content"
-             android:layout_height="40dp"
+             android:layout_height="wrap_content"
              android:text="@string/First_text"
              android:id="@+id/textView2"
              android:layout_below="@+id/linearLayout"
@@ -41,23 +42,25 @@
              android:layout_marginTop="13dp"
              android:textStyle="normal"
              android:textSize="@dimen/padding_medium"
-             android:layout_gravity="center_horizontal"
-             android:layout_weight="1" />
+             android:layout_gravity="center_horizontal" />
 
          <LinearLayout
-             android:layout_width="fill_parent"
-             android:layout_height="fill_parent"
-             android:layout_weight="1">
+             android:orientation="vertical"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:layout_gravity="center_horizontal"
+             android:weightSum="1">
 
              <LinearLayout
                  android:orientation="vertical"
-                 android:layout_width="0dp"
-                 android:layout_height="fill_parent"
-                 android:layout_weight="1"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
                  android:focusableInTouchMode="true"
                  android:background="@android:drawable/dialog_holo_light_frame"
                  android:baselineAligned="false"
-                 android:clickable="true">
+                 android:clickable="true"
+                 android:layout_gravity="center_horizontal"
+                 android:weightSum="1">
 
                  <TextView
                      android:layout_width="wrap_content"
@@ -68,12 +71,12 @@
                      android:textSize="@dimen/padding_half_medium" />
 
                  <LinearLayout
-                     android:layout_width="fill_parent"
-                     android:layout_height="fill_parent">
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent">
 
                      <EditText
                          android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
+                         android:layout_height="match_parent"
                          android:id="@+id/editText_price"
                          android:layout_weight="1"
                          android:inputType="numberDecimal" />
@@ -89,11 +92,11 @@
 
              <LinearLayout
                  android:orientation="vertical"
-                 android:layout_width="0dp"
-                 android:layout_height="fill_parent"
-                 android:layout_weight="1"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
                  android:background="@android:drawable/dialog_holo_light_frame"
-                 android:baselineAligned="false">
+                 android:baselineAligned="false"
+                 android:layout_gravity="center_horizontal">
 
                  <TextView
                      android:layout_width="wrap_content"
@@ -105,7 +108,7 @@
 
                  <EditText
                      android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
+                     android:layout_height="match_parent"
                      android:id="@+id/editText_comp"
                      android:inputType="numberDecimal" />
 
@@ -113,12 +116,12 @@
          </LinearLayout>
 
          <Button
-             android:layout_width="wrap_content"
+             android:layout_width="78dp"
              android:layout_height="wrap_content"
              android:text="@string/button_next"
              android:id="@+id/button_next"
              android:layout_gravity="center_horizontal"
-             android:layout_marginTop="24dp" />
+             android:layout_marginTop="50dp" />
 
      </LinearLayout>
 
