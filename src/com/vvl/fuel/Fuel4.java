@@ -7,10 +7,12 @@ import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,7 +25,7 @@ import java.util.ArrayList;
 /**
  * Created by vladimir on 11.11.13.
  */
-public class Fuel4 extends Activity implements View.OnClickListener {
+public class Fuel4 extends Activity implements View.OnClickListener, View.OnTouchListener {
 
     private ArrayList<PostItem> messages;
 
@@ -53,6 +55,7 @@ public class Fuel4 extends Activity implements View.OnClickListener {
     float distance;
     float consumption;
     String pos_item;
+    float fromPosition = 0;
 
     int dubtrip;
     String[] data = {"US Dollar", "грн.", "руб.", "Euro", "British Pound Sterling", "Polish Zloty"};
@@ -170,6 +173,10 @@ public class Fuel4 extends Activity implements View.OnClickListener {
             float result2_2_n = new BigDecimal (result2_2).setScale(2, RoundingMode.HALF_UP).floatValue();
             textView45.setText(getResources().getText(R.string.result3_1).toString() + " " + result2_2_n + " " + getResources().getText(R.string.result2_3).toString());
         }
+
+        // Устанавливаем listener касаний, для последующего перехвата жестов
+        LinearLayout mainLayout = (LinearLayout) findViewById(R.id.main_layout4);
+        mainLayout.setOnTouchListener(this);
 
     }
 
@@ -316,5 +323,28 @@ public class Fuel4 extends Activity implements View.OnClickListener {
         }
     }
 
+    @Override
+    public boolean onTouch(View view, MotionEvent event) {
+
+        switch (event.getAction()) {
+            // Пользователь нажал на экран, т.е. начало движения
+            // fromPosition - координата по оси X начала выполнения операции
+            case MotionEvent.ACTION_DOWN:
+                fromPosition = event.getX();
+                break;
+            // Пользователь отпустил экран, т.е. окончание движения
+            case MotionEvent.ACTION_UP:
+                float toPosition = event.getX();
+                if (fromPosition > toPosition) {
+                    ;}
+                else if (fromPosition < toPosition) {
+                    finish();
+                }
+                break;
+            default:
+                break;
+        }
+        return true;
+    }
 
 }

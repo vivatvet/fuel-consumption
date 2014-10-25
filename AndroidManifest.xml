@@ -13,7 +13,8 @@
     <application
         android:icon="@drawable/fuel"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AnimationActivity" >
+        <!--android:theme="@style/AppTheme" > -->
         <activity
             android:name=".Fuel2"
             android:label="@string/title_activity_fuel" >
@@ -26,12 +27,12 @@
         <activity
             android:name=".Fuel3"
             android:label="@string/title_activity_fuel"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AnimationActivity" >
         </activity>
         <activity
             android:name=".Fuel4"
             android:label="@string/title_activity_fuel"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AnimationActivity" >
         </activity>
     </application>
 

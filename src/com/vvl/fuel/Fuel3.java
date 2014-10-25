@@ -4,18 +4,20 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 /**
  * Created by budnik on 28.10.13.
  */
-public class Fuel3 extends Activity implements View.OnClickListener {
+public class Fuel3 extends Activity implements View.OnClickListener, View.OnTouchListener {
 
     TextView textView_price;
     TextView textView_comp;
@@ -35,6 +37,7 @@ public class Fuel3 extends Activity implements View.OnClickListener {
     String comp_g;
     String curr_g;
     String pos_item;
+    float fromPosition = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +63,11 @@ public class Fuel3 extends Activity implements View.OnClickListener {
         comp_g = comp;
         curr_g = curr;
 
-        if (comp.isEmpty()) {textView_comp.setText(getResources().getText(R.string.fuel_comp_empty).toString());}
-        else {textView_comp.setText(comp + " " + getResources().getText(R.string.liters).toString());}
+        if (comp.isEmpty()) {
+            textView_comp.setText(getResources().getText(R.string.fuel_comp_empty).toString());
+        } else {
+            textView_comp.setText(comp + " " + getResources().getText(R.string.liters).toString());
+        }
         textView_price.setText(price + " " + curr);
 
         final Spinner spinner = (Spinner) findViewById(R.id.spinner_way);
@@ -81,6 +87,7 @@ public class Fuel3 extends Activity implements View.OnClickListener {
                 // dist_sp = spinner.getSelectedItem().toString();
                 dist_sp = String.valueOf(spinner.getSelectedItemPosition());
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
                 // TODO Auto-generated method stub
@@ -88,6 +95,10 @@ public class Fuel3 extends Activity implements View.OnClickListener {
         });
 
         loadText();
+
+        // Устанавливаем listener касаний, для последующего перехвата жестов
+        LinearLayout mainLayout = (LinearLayout) findViewById(R.id.main_layout3);
+        mainLayout.setOnTouchListener(this);
     }
 
     void saveText() {
@@ -115,8 +126,11 @@ public class Fuel3 extends Activity implements View.OnClickListener {
         editText_dist.setText(savedDist);
         editText_sum.setText(savedSum);
         editText_fuel.setText(savedFuel);
-        if (savedDP == "") {spinner.setSelection(0);}
-        else {spinner.setSelection(Integer.parseInt(savedDP));}
+        if (savedDP == "") {
+            spinner.setSelection(0);
+        } else {
+            spinner.setSelection(Integer.parseInt(savedDP));
+        }
         //Toast.makeText(this, "Text loaded", Toast.LENGTH_SHORT).show();
     }
 
@@ -142,5 +156,41 @@ public class Fuel3 extends Activity implements View.OnClickListener {
             default:
                 break;
         }
+    }
+
+    @Override
+    public boolean onTouch(View view, MotionEvent event) {
+
+        switch (event.getAction()) {
+            // Пользователь нажал на экран, т.е. начало движения
+            // fromPosition - координата по оси X начала выполнения операции
+            case MotionEvent.ACTION_DOWN:
+                fromPosition = event.getX();
+                break;
+            // Пользователь отпустил экран, т.е. окончание движения
+            case MotionEvent.ACTION_UP:
+                float toPosition = event.getX();
+                if (fromPosition > toPosition) {
+                    saveText();
+                    final Spinner spinner = (Spinner) findViewById(R.id.spinner_way);
+                    dist_sp = String.valueOf(spinner.getSelectedItemPosition());
+                    Intent intent = new Intent(this, Fuel4.class);
+                    intent.putExtra("dist", editText_dist.getText().toString());
+                    intent.putExtra("sum", editText_sum.getText().toString());
+                    intent.putExtra("fuel", editText_fuel.getText().toString());
+                    intent.putExtra("dist_sp", dist_sp.toString());
+                    intent.putExtra("price3", price_g);
+                    intent.putExtra("comp3", comp_g);
+                    intent.putExtra("curr3", curr_g);
+                    intent.putExtra("pos_item", pos_item);
+                    startActivity(intent);}
+                else if (fromPosition < toPosition) {
+                       finish();
+                    }
+                break;
+            default:
+                break;
+        }
+        return true;
     }
 }

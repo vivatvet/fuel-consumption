@@ -4,19 +4,19 @@
     <string name="hello_world">Test text!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_fuel">Fuel Consumption</string>
-    <string name="price_gasoline">Введите стоимость 1 литра бензина.</string>
+    <string name="price_gasoline">Введите стоимость 1 литра топлива.</string>
     <string name="consump_gasoline">Введите расход Вашего авто (Л/100км).</string>
     <string name="header">Рассчет потраченного бензина и денег, а так же пути.</string>
     <string name="distance">Введите сколько км вы проехали.</string>
-    <string name="sum">Введите сумму денег.</string>
-    <string name="gasoline">Введите количество бензина в литрах.</string>
+    <string name="sum">Введите сумму, потраченную на топливо.</string>
+    <string name="gasoline">Введите количество топлива в литрах.</string>
     <string name="ref_result">Нажмите OK.</string>
     <string name="check_box1">Двойной путь.</string>
     
     <string name="result1_1">Вы потратили </string>
-    <string name="result1_2"> литров бензина и </string>
+    <string name="result1_2"> литров и </string>
     <string name="result2_1">Вы купите</string>
-    <string name="result2_2">л. бензина.</string>
+    <string name="result2_2">л.</string>
     <string name="result2_3">км.</string>
      <string name="result3_1">Вы проедете</string>
     <string name="out_feed">Выводить в</string>
@@ -26,7 +26,7 @@
     
     <string name="button_ok">OK</string>
     <string name="button_up">Обнов.</string>
-    <string name="First_text">Введите стоимость 1 литра бензина, а также, если известно, расход Вашего авто (Л/100км).</string>
+    <string name="First_text">Введите стоимость 1 литра топлива, а также, если известно, расход Вашего авто (Л/100км).</string>
 
     <string name="button_next">Далее</string>
     <string name="textView_price_title">Стоимость топлива:</string>

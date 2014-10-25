@@ -5,18 +5,20 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 /**
  * Created by budnik on 24.10.13.
  */
-public class Fuel2 extends Activity implements View.OnClickListener {
+public class Fuel2 extends Activity implements View.OnClickListener, View.OnTouchListener {
 
     String[] data = {"US Dollar", "грн.", "руб.", "Euro", "British Pound Sterling", "Polish Zloty"};
     SharedPreferences sPref;
@@ -31,6 +33,7 @@ public class Fuel2 extends Activity implements View.OnClickListener {
     String d;
     int pos_item = 1;
     int savedCurrency;
+    float fromPosition = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +53,7 @@ public class Fuel2 extends Activity implements View.OnClickListener {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        final Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        final Spinner spinner = (Spinner) findViewById(R.id.spinner2);
         spinner.setAdapter(adapter);
 
         // заголовок
@@ -76,6 +79,10 @@ public class Fuel2 extends Activity implements View.OnClickListener {
                 // TODO Auto-generated method stub
             }
         });
+
+        // Устанавливаем listener касаний, для последующего перехвата жестов
+        LinearLayout mainLayout = (LinearLayout) findViewById(R.id.main_layout2);
+        mainLayout.setOnTouchListener(this);
 
     }
 
@@ -122,6 +129,7 @@ public class Fuel2 extends Activity implements View.OnClickListener {
                 intent.putExtra("curr", d);
                 intent.putExtra("pos_item", Integer.toString(pos_item));
                 startActivity(intent);
+
                 break;
             default:
                 break;
@@ -130,4 +138,38 @@ public class Fuel2 extends Activity implements View.OnClickListener {
     }
 
 
+    @Override
+    public boolean onTouch(View view, MotionEvent event) {
+
+        switch (event.getAction()) {
+            // Пользователь нажал на экран, т.е. начало движения
+            // fromPosition - координата по оси X начала выполнения операции
+            case MotionEvent.ACTION_DOWN:
+                fromPosition = event.getX();
+                break;
+            // Пользователь отпустил экран, т.е. окончание движения
+            case MotionEvent.ACTION_UP:
+                float toPosition = event.getX();
+                if (fromPosition > toPosition){
+                    // Проверяем поля на пустоту
+                    if (TextUtils.isEmpty(editText_price.getText().toString()) ) {
+                        Toast.makeText(this, getResources().getText(R.string.price_empty).toString(), Toast.LENGTH_SHORT).show();
+                        return false;
+                    }
+                    saveText();
+                    Intent intent = new Intent(this, Fuel3.class);
+                    intent.putExtra("price", editText_price.getText().toString());
+                    intent.putExtra("comp", editText_comp.getText().toString());
+                    intent.putExtra("curr", d);
+                    intent.putExtra("pos_item", Integer.toString(pos_item));
+                    startActivity(intent);}
+                else if (fromPosition < toPosition){
+                    //nothing
+                    ;}
+                break;
+            default:
+                break;
+        }
+        return true;
+    }
 }
