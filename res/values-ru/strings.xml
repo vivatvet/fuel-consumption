@@ -6,7 +6,7 @@
     <string name="title_activity_fuel">Fuel Consumption</string>
     <string name="price_gasoline">Введите стоимость 1 литра топлива.</string>
     <string name="consump_gasoline">Введите расход Вашего авто (Л/100км).</string>
-    <string name="header">Рассчет потраченного бензина и денег, а так же пути.</string>
+    <string name="header">Рассчет потраченного топлива и денег, а так же пути.</string>
     <string name="distance">Введите сколько км вы проехали.</string>
     <string name="sum">Введите сумму, потраченную на топливо.</string>
     <string name="gasoline">Введите количество топлива в литрах.</string>
